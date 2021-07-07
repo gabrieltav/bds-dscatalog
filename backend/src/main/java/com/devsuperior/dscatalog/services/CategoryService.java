@@ -68,7 +68,5 @@ public class CategoryService {
 		catch (DataIntegrityViolationException e) {
 			throw new DatabaseException("Integrity violation");
 		}
-		
 	}
-
 }
