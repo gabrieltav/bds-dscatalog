@@ -6,17 +6,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.5</version>
+		<version>2.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.devsuperior</groupId>
 	<artifactId>dscatalog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dscatalog</name>
-	<description>DsCatalog Bootcamp DevSuperior</description>
+	<description>DSCatalog Bootcamp DevSuperior</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -33,7 +34,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<!--scope>runtime</scope -->
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -60,10 +61,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -75,4 +81,15 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
