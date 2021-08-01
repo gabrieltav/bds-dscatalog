@@ -26,8 +26,8 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.devsuperior.dscatalog.dto.ProductDTO;
 import com.devsuperior.dscatalog.services.ProductService;
-import com.devsuperior.dscatalog.services.execeptions.DatabaseException;
-import com.devsuperior.dscatalog.services.execeptions.ResourceNotFoundException;
+import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
+import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 import com.devsuperior.dscatalog.tests.Factory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -57,7 +57,7 @@ public class ProductResourceTests {
 		productDTO = Factory.createProductDTO();
 		page = new PageImpl<>(List.of(productDTO));
 		
-		when(service.findAllPaged(any())).thenReturn(page);
+		when(service.findAllPaged(any(), any(), any())).thenReturn(page);
 		
 		when(service.findById(existingId)).thenReturn(productDTO);
 		when(service.findById(nonExistingId)).thenThrow(ResourceNotFoundException.class);

@@ -19,12 +19,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.devsuperior.dscatalog.dto.CategoryDTO;
 import com.devsuperior.dscatalog.services.CategoryService;
 
-//controla o controlador REST
-//recurso da classe Category
-
 @RestController
-@RequestMapping(value = "/categories") //rota
-public class CategoryResource {//TERMO
+@RequestMapping(value = "/categories")
+public class CategoryResource {
 	
 	@Autowired
 	private CategoryService service;
