@@ -15,7 +15,7 @@ interface ProductProps {
   price: Number;
 }
 
-const ProductCard: React.FC = ({ id, name, imgUrl, price }) => {
+const ProductCard: React.FC<ProductProps> = ({ id, name, imgUrl, price }) => {
   return (
     <TouchableOpacity style={theme.productCard}>
       <Image source={imgUrl} />
