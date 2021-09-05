@@ -129,6 +129,11 @@ const theme = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
   },
+  productImg: {
+    width: 140,
+    height: 140,
+    margin: 16,
+  },
   inputContainer: {
     width: "100%",
     height: 60,

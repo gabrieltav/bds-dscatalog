@@ -1,45 +1,26 @@
-import React, { useState } from "react";
-import { ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { ScrollView, ActivityIndicator } from "react-native";
 import { ProductCard, SearchInput } from "../components";
-
-import productImg from "../assets/product.png";
+import { api } from "../services";
 import { theme } from "../styles";
-
-const products = [
-  {
-    id: 1,
-    imgUrl: productImg,
-    name: "Smartphone",
-    price: 2279.0,
-  },
-  {
-    id: 2,
-    imgUrl: productImg,
-    name: "Computador Desktop = Intel Core i7",
-    price: 2279.0,
-  },
-  {
-    id: 3,
-    imgUrl: productImg,
-    name: "Computador Desktop = Intel Core i7",
-    price: 2279.0,
-  },
-  {
-    id: 4,
-    imgUrl: productImg,
-    name: "Computador Desktop = Intel Core i7",
-    price: 2279.0,
-  },
-  {
-    id: 5,
-    imgUrl: productImg,
-    name: "Computador Desktop = Intel Core i7",
-    price: 2279.0,
-  },
-];
 
 const Catalog: React.FC = () => {
   const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  async function fillProducts() {
+    setLoading(true);
+    const res = await api.get(
+      `/products?page=0&size=12&sort=name,asc&categoryId=3&name`
+    );
+    setProducts(res.data.content);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fillProducts();
+  }, []);
 
   const data =
     search.length > 0
@@ -49,10 +30,16 @@ const Catalog: React.FC = () => {
       : products;
   return (
     <ScrollView contentContainerStyle={theme.scrollContainer}>
-      <SearchInput placeholder="Nome do produto" search setSearch={setSearch} />
-      {data.map((product) => (
-        <ProductCard {...product} />
-      ))}
+      <SearchInput
+        placeholder="Nome do produto"
+        search={search}
+        setSearch={setSearch}
+      />
+      {loading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        data.map((product) => <ProductCard {...product} key={product.id} />)
+      )}
     </ScrollView>
   );
 };
