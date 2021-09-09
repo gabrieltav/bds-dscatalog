@@ -45,7 +45,7 @@ const ProductDetails = ({
   return (
     <View style={theme.detailsContainer}>
       {loading ? (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#407BEE" />
       ) : (
         <View style={theme.detailCard}>
           <TouchableOpacity

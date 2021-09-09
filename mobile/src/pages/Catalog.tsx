@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, ActivityIndicator } from "react-native";
+import { ScrollView, ActivityIndicator, View } from "react-native";
 import { ProductCard, SearchInput } from "../components";
 import { api } from "../services";
 import { theme } from "../styles";
@@ -36,7 +36,7 @@ const Catalog: React.FC = () => {
         setSearch={setSearch}
       />
       {loading ? (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#407BEE" />
       ) : (
         data.map((product) => <ProductCard {...product} key={product.id} />)
       )}

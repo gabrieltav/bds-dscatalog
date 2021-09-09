@@ -1,5 +1,7 @@
 import { setStatusBarBackgroundColor } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const deviceWidth = Dimensions.get("window").width;
 
 const colors = {
   white: "#FFFFFF",
@@ -225,4 +227,21 @@ const theme = StyleSheet.create({
   },
 });
 
-export { colors, theme, text };
+const nav = StyleSheet.create({
+  leftText: {
+    color: colors.white,
+    fontWeight: "bold",
+    marginLeft: 5,
+  },
+  drawer: {
+    marginRight: 5,
+  },
+  options: {
+    width: deviceWidth,
+    height: 20,
+    marginTop: 125,
+    marginRight: -20,
+    justifyContent: "space-between",
+  },
+});
+export { colors, theme, text, nav };
