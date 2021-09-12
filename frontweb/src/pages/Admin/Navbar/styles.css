@@ -33,3 +33,31 @@ ul {
 .admin-nav-item p {
   margin-bottom: 0;
 }
+
+@media (min-width: 768px) {
+  .admin-nav-item {
+    min-width: 220px;
+  }
+}
+
+@media (min-width: 1200px) {
+  ul {
+    justify-content: unset;
+    flex-direction: column;
+  }
+  .admin-nav-container {
+    padding: 0px;
+    width: 300px;
+    height: calc(100vh - 70px);
+  }
+
+  .admin-nav-item {
+    justify-content: flex-start;
+    padding-left: 40px;
+    border-radius: 0;
+    font-size: 18px;
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e1e1e1;
+  }
+}
