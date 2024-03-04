@@ -1,16 +1,12 @@
-FROM ubuntu:latest AS build
+FROM openjdk:11
 
 RUN apt-get update
-RUN apt-get install openjdk-11-jdk -y
 COPY . .
 
-RUN apt-get install maven -y
-RUN mvn clean install 
-
-FROM openjdk:11-jdk-slim
+RUN mvn clean package
 
 EXPOSE 8080
 
 COPY --from=build /target/dscatalog-0.0.1-SNAPSHOT.jar dscatalog.jar
 
-ENTRYPOINT [ "java", "-jar", "dscatalog.jar" ]
+ENTRYPOINT ["java","-jar","/dscatalog.jar"]
